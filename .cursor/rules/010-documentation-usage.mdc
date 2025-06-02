@@ -1,8 +1,9 @@
 ---
-description: 
+description: Guidelines for using MCP documentation tools effectively to understand codebases and maintain development consistency
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
+
 # Documentation Usage Guidelines
 
 ## Overview
@@ -24,29 +25,7 @@ Documents module-level functions with signatures, decorators, and type hints.
 
 ### 1. UML Class Diagrams (`docs/uml.txt`)
 
-This file contains PlantUML representations of all Python classes in the project:
-
-```plantuml
-@startuml
-!theme plain
-skinparam classAttributeIconSize 0
-skinparam classFontStyle bold
-
-class DocsToolServer {
-  +server: McpServer
-  +setupTools(): void
-  +run(): Promise<void>
-}
-
-class UMLClassVisitor {
-  +classes: Dict
-  +imports: Set
-  +visit_ClassDef(node): void
-  +visit_FunctionDef(node): void
-}
-
-@enduml
-```
+This file contains PlantUML representations of all Python classes in the project.
 
 **When to use:**
 - Before creating new classes to understand inheritance relationships
@@ -56,26 +35,7 @@ class UMLClassVisitor {
 
 ### 2. Directory Tree Structure (`docs/tree-structure.txt`)
 
-This file shows the hierarchical organization of the project with smart exclusions:
-
-```
-mcp-docs-tools
-├── bin/
-│   └── server.js
-├── src/
-│   ├── server.js
-│   ├── tools/
-│   │   ├── class-diagram.js
-│   │   ├── tree-structure.js
-│   │   └── module-functions.js
-│   └── config/
-│       └── exclusions.js
-├── python/
-│   ├── generate_uml.py
-│   ├── generate_tree.py
-│   └── generate_functions.py
-└── README.md
-```
+This file shows the hierarchical organization of the project with smart exclusions.
 
 **When to use:**
 - When adding new files to place them in appropriate directories
@@ -85,29 +45,7 @@ mcp-docs-tools
 
 ### 3. Module Functions Documentation (`docs/module-functions.txt`)
 
-This file documents all module-level functions with complete signatures:
-
-```markdown
-## Module: src.tools.class-diagram
-
-### `async def generateClassDiagram(projectPath: string): Promise<object>`
-
-**Description:**
-Generates UML class diagrams from Python code using AST parsing.
-
-**Line:** 8
-
----
-
-## Module: python.generate_uml
-
-### `def parse_python_file(file_path: str) -> UMLClassVisitor`
-
-**Description:**
-Parse a Python file and extract class information.
-
-**Line:** 156
-```
+This file documents all module-level functions with complete signatures.
 
 **When to use:**
 - Before implementing new utility functions to avoid duplication
@@ -193,15 +131,6 @@ Parse a Python file and extract class information.
 - Essential for discovering existing utilities
 - Shows function signatures and parameter types
 - Helps avoid reimplementing existing functionality
-
-## Troubleshooting
-
-If documentation generation fails:
-
-1. **Check Python Installation**: Ensure Python 3.x is available
-2. **Verify Project Path**: Make sure the target directory exists and contains Python files
-3. **Check File Permissions**: Ensure the tools can read source files and write to docs/
-4. **Review Error Messages**: Python AST parsing errors indicate syntax issues in source files
 
 ## Integration with Development Workflow
 

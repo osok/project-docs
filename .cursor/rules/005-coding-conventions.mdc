@@ -1,8 +1,9 @@
 ---
-description: 
-globs: 
+description: Python coding conventions and documentation guidelines for this project
+globs: "**/*.py"
 alwaysApply: false
 ---
+
 # Coding Conventions and Documentation Guidelines
 
 ## Python Code Style
@@ -17,7 +18,7 @@ alwaysApply: false
 
 ### Docstrings
 
-- Use Google-style docstrings:
+Use Google-style docstrings:
 ```python
 def function_name(param1: str, param2: int) -> bool:
     """Short description of function.
@@ -64,7 +65,8 @@ The MCP Documentation Tool Server generates three key documentation files:
 ## Best Practices
 
 1. **Generate Documentation First**
-   - Always run the `create_docs` MCP tool at the beginning of your session
+   - Always run the MCP documentation tools at the beginning of your session
+   - Use: `create_class_diagram`, `create_tree_structure`, `create_module_functions`
    - This ensures you're working with the latest codebase understanding
 
 2. **Review Generated Documentation**
@@ -87,13 +89,15 @@ The MCP Documentation Tool Server generates three key documentation files:
    - Follow the existing test patterns in `tests/`
    - Run the test suite after making changes
 
-## Using the MCP Tool
+## Using the MCP Tools
 
-To generate updated documentation, use the following in a Cursor conversation:
+To generate updated documentation, request the following MCP tools:
 
 ```
-Please generate documentation for this project using the docs-generator MCP server with the project_path set to the current directory.
+Please run the MCP documentation tools:
+- create_class_diagram
+- create_tree_structure  
+- create_module_functions
 ```
 
 This will analyze the codebase and create fresh documentation files in the `docs/` directory.
-
