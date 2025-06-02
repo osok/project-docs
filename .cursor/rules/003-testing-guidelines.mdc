@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Testing workflow, procedures, and test naming conventions
+globs: **/*test*
+alwaysApply: false
+---
+
+# Testing Workflow
+
+## Usage
+- Tests must be developed alongside functionality
+- All tests must pass before marking a task complete
+- Checkpoints serve as verification points for multiple related tasks
+
+## Rules
+1. WRITE tests before or alongside the implementation of functionality
+2. RUN tests frequently during development
+3. ENSURE test coverage for all critical paths
+4. AUTOMATE tests where possible
+5. INCLUDE edge cases and error scenarios in tests
+6. UPDATE tests when requirements change
+
+## Test Naming Convention
+- Use format: `test_[function/module]_[scenario]_[expected_result]`

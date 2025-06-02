@@ -1,0 +1,40 @@
+{
+  "name": "mcp-docs-tools",
+  "version": "1.0.0",
+  "description": "MCP tools for generating project documentation",
+  "type": "module",
+  "bin": {
+    "mcp-docs-tools": "./bin/server.js"
+  },
+  "main": "./src/server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node bin/server.js",
+    "dev": "node bin/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "zod": "^3.25.48"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "documentation",
+    "uml",
+    "python",
+    "ast"
+  ],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "src/",
+    "python/",
+    "README.md"
+  ]
+}

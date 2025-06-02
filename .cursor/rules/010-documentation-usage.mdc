@@ -1,0 +1,211 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Documentation Usage Guidelines
+
+## Overview
+
+The MCP Docs Tools server provides three powerful documentation generation tools for Python projects. These guidelines explain how to effectively use these tools to understand codebases and maintain development consistency.
+
+## Available MCP Tools
+
+### 1. `create_class_diagram`
+Generates UML class diagrams from Python code using AST parsing.
+
+### 2. `create_tree_structure` 
+Creates clean directory tree structure with smart exclusions.
+
+### 3. `create_module_functions`
+Documents module-level functions with signatures, decorators, and type hints.
+
+## Generated Documentation Files
+
+### 1. UML Class Diagrams (`docs/uml.txt`)
+
+This file contains PlantUML representations of all Python classes in the project:
+
+```plantuml
+@startuml
+!theme plain
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+
+class DocsToolServer {
+  +server: McpServer
+  +setupTools(): void
+  +run(): Promise<void>
+}
+
+class UMLClassVisitor {
+  +classes: Dict
+  +imports: Set
+  +visit_ClassDef(node): void
+  +visit_FunctionDef(node): void
+}
+
+@enduml
+```
+
+**When to use:**
+- Before creating new classes to understand inheritance relationships
+- When extending existing classes to maintain consistent patterns
+- When refactoring object-oriented code to preserve architecture
+- To visualize class dependencies and relationships
+
+### 2. Directory Tree Structure (`docs/tree-structure.txt`)
+
+This file shows the hierarchical organization of the project with smart exclusions:
+
+```
+mcp-docs-tools
+├── bin/
+│   └── server.js
+├── src/
+│   ├── server.js
+│   ├── tools/
+│   │   ├── class-diagram.js
+│   │   ├── tree-structure.js
+│   │   └── module-functions.js
+│   └── config/
+│       └── exclusions.js
+├── python/
+│   ├── generate_uml.py
+│   ├── generate_tree.py
+│   └── generate_functions.py
+└── README.md
+```
+
+**When to use:**
+- When adding new files to place them in appropriate directories
+- To understand the overall project organization
+- When refactoring to maintain consistent structure
+- To get a quick overview of project scope and complexity
+
+### 3. Module Functions Documentation (`docs/module-functions.txt`)
+
+This file documents all module-level functions with complete signatures:
+
+```markdown
+## Module: src.tools.class-diagram
+
+### `async def generateClassDiagram(projectPath: string): Promise<object>`
+
+**Description:**
+Generates UML class diagrams from Python code using AST parsing.
+
+**Line:** 8
+
+---
+
+## Module: python.generate_uml
+
+### `def parse_python_file(file_path: str) -> UMLClassVisitor`
+
+**Description:**
+Parse a Python file and extract class information.
+
+**Line:** 156
+```
+
+**When to use:**
+- Before implementing new utility functions to avoid duplication
+- When modifying existing functions to understand dependencies
+- When needing to use utility functions from other modules
+- To understand function signatures and expected parameters
+
+## Workflow Integration
+
+### Before Starting Work on a Python Project
+
+1. **Generate Fresh Documentation**
+   ```
+   Use the MCP tools to generate documentation:
+   - create_class_diagram
+   - create_tree_structure  
+   - create_module_functions
+   ```
+
+2. **Review Generated Documentation**
+   - Examine `docs/uml.txt` for class relationships and architecture
+   - Check `docs/module-functions.txt` for existing utilities and functions
+   - Review `docs/tree-structure.txt` for project organization patterns
+
+### During Development
+
+1. **Reference Documentation First**
+   - Before creating new classes, check UML diagrams for existing patterns
+   - Before writing utility functions, check module functions documentation
+   - Use tree structure to understand where new files should be placed
+
+2. **Follow Established Patterns**
+   - Maintain consistency with existing class hierarchies shown in UML
+   - Follow naming conventions evident in function documentation
+   - Respect the directory structure shown in tree documentation
+
+3. **Avoid Code Duplication**
+   - Search module functions documentation before implementing new utilities
+   - Check class diagrams for existing functionality before creating new classes
+
+### After Completing Work
+
+1. **Regenerate Documentation**
+   - Run the MCP tools again to update documentation
+   - Compare changes to verify architectural consistency
+   - Ensure new code follows established patterns
+
+2. **Validate Changes**
+   - Review updated UML diagrams for architectural coherence
+   - Check that new functions are properly documented
+   - Verify directory structure remains organized
+
+## Best Practices
+
+### Documentation Generation
+- **Always Generate Before Starting**: Ensure you're working with current documentation
+- **Use All Three Tools**: Each provides different but complementary insights
+- **Generate After Major Changes**: Keep documentation current with code changes
+
+### Code Development
+- **Search Before Creating**: Look for existing functionality in module functions
+- **Follow UML Patterns**: Maintain consistency with existing class designs
+- **Respect Project Structure**: Place new files according to established organization
+
+### Documentation Usage
+- **Reference During Code Review**: Use documentation to verify architectural decisions
+- **Share with Team**: Generated docs help onboard new developers
+- **Track Evolution**: Compare documentation over time to understand project growth
+
+## Tool-Specific Usage Tips
+
+### `create_class_diagram`
+- Best for understanding object-oriented architecture
+- Reveals inheritance relationships and class dependencies
+- Helps identify opportunities for refactoring or pattern improvements
+
+### `create_tree_structure`
+- Perfect for understanding project organization
+- Shows which directories contain what types of files
+- Helps maintain consistent file placement
+
+### `create_module_functions`
+- Essential for discovering existing utilities
+- Shows function signatures and parameter types
+- Helps avoid reimplementing existing functionality
+
+## Troubleshooting
+
+If documentation generation fails:
+
+1. **Check Python Installation**: Ensure Python 3.x is available
+2. **Verify Project Path**: Make sure the target directory exists and contains Python files
+3. **Check File Permissions**: Ensure the tools can read source files and write to docs/
+4. **Review Error Messages**: Python AST parsing errors indicate syntax issues in source files
+
+## Integration with Development Workflow
+
+- **Session Start**: Generate documentation to understand current codebase state
+- **Feature Planning**: Use documentation to plan new features that fit existing architecture
+- **Code Review**: Reference documentation to ensure changes maintain consistency
+- **Refactoring**: Use documentation to understand impact of proposed changes

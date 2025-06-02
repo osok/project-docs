@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Project organization, documentation, and file structure guidelines
+globs: **/*
+alwaysApply: true
+---
+
+# Project Documentation Guidelines
+
+## Notes File
+Path: `docs/notes.md`
+
+### Usage
+- Tracks important aspects of the Slides2Video application design
+- Reference and update this file as development progresses
+- Maintain the structured format while adding new content
+
+### Update Rules
+1. READ the notes file at the beginning of each development session
+2. UPDATE the relevant sections when making significant design decisions
+3. MAINTAIN the hierarchical structure when adding new content
+4. DATE all entries in the format [YYYY-MM-DD]
+5. KEEP entries concise and focused on rationale, not implementation details
+6. LINK to relevant code files or documentation when appropriate using relative paths
+7. MOVE completed TODOs to the relevant sections with implementation details
+8. DOCUMENT challenges and their solutions promptly
+
+### Content Guidelines
+- Prioritize WHY over HOW in architectural decision documentation
+- Document trade-offs considered in design decisions
+- Record performance implications of significant decisions
+- Note security considerations explicitly
+- Track third-party dependencies and version constraints
+- Document non-obvious design patterns or architectural approaches
+- Note any deviations from the initial design document and their rationale
+
+### Format
+- New Decision: " ecision to [DECISION] because [RATIONALE]."
+- New Challenge: "**Challenge**: [DESCRIPTION]\n**Solution**: [SOLUTION]\n**Impact**: [IMPACT]"
+- New Todo: "[ ] [DESCRIPTION] - [PRIORITY: High/Medium/Low] [ESTIMATION]"
+- Completed Todo: "[x] [DESCRIPTION] - Implemented in [FILE/COMPONENT]"
+
+## Design Document
+Path: `docs/Design.md`
+
+### Usage
+- Serves as the authoritative source of the application design
+- Refer to this document for architectural decisions and component specifications
+- Use as reference when implementing features to ensure adherence to the design
+
+### Reference Rules
+1. CONSULT the design document before implementing any feature
+2. UNDER NO CIRCUMSTANCE will you modify the Design.md unless the user explicitly asks you to modify the Design.md.
+3. ALIGN implementation with the specifications in the design document
+4. NOTE any deviations from the design in the notes.md file with clear rationale
+5. PRESERVE design decisions by referencing the document section in code comments

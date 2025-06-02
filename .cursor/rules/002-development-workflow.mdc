@@ -1,0 +1,45 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Task management, development workflow, and checkpoint processes
+globs: 
+alwaysApply: true
+---
+
+# Development Workflow
+
+## Task List
+Path: `docs/task_list.md`
+
+### Usage
+- Tracks all development tasks, their dependencies, and completion status
+- Follow the task order based on dependencies to ensure smooth development
+- Update task status as development progresses
+
+### Workflow Rules
+1. ALWAYS check the task list before starting new work
+2. ONLY work on tasks whose dependencies are marked as 'Complete'
+3. UPDATE task status to 'In Progress' when beginning work
+4. IMPLEMENT tests alongside functionality as indicated by test tasks (T prefix)
+5. RUN all tests at checkpoints (C prefix) before marking related tasks complete
+6. COMMIT code to repository after successfully passing checkpoint tests
+7. UPDATE task status to 'Complete' only after all tests pass
+8. DOCUMENT any blockers or issues in the notes.md file
+9. BREAK large tasks into smaller sub-tasks if they take more than 4 hours
+
+### Task Update Format
+- Start Task: "Update status of task [ID] from 'Pending' to 'In Progress'"
+- Complete Task: "Update status of task [ID] from 'In Progress' to 'Complete'"
+- Add Sub-Task: "Add sub-task under [PARENT_ID]: | [PARENT_ID].[SUB_NUM] | [DESCRIPTION] | [PARENT_ID] | Pending | [REFERENCE] |"
+- Task Note: "Add note to task [ID]: [NOTE]"
+
+### Checkpoint Rules
+1. ENSURE all tasks required for the checkpoint are complete
+2. RUN all associated tests and ensure they pass
+3. COMMIT code with message: 'Checkpoint [C#]: [CHECKPOINT DESCRIPTION]'
+4. CREATE a tag in the repository for the checkpoint
+5. UPDATE the checkpoint status to 'Complete' only after the above steps
+6. START a new conversation with Cursor after each checkpoint to keep context fresh

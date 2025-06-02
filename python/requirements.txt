@@ -1,0 +1,2 @@
+# Core Python AST parsing - no additional dependencies needed
+# Python's built-in ast module is sufficient for our needs 

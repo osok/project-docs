@@ -1,0 +1,64 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Context7 integration, library documentation, and API usage guidelines
+globs: 
+alwaysApply: true
+---
+
+# Context7 Integration
+
+## Usage
+- This configuration ensures Context7 is used by default for most coding tasks
+- Context7 provides up-to-date documentation from official sources
+- These rules help prevent outdated code suggestions and API usage
+
+## Behavior Rules
+1. APPEND 'use context7' to code-related queries automatically
+2. PRIORITIZE current documentation over training data for libraries
+3. UTILIZE Context7 for all package implementation questions
+4. INFORM user when Context7 is being used to retrieve information
+5. ALLOW override with explicit 'no context7' statement
+
+## Application Scopes
+
+### Languages
+- JavaScript/TypeScript: Always use for npm packages
+- Python: Use for libraries with significant version changes
+- Any language: Use for rapidly evolving frameworks and libraries
+
+### Frameworks
+- Next.js
+- React
+- Vue
+- Angular
+- Tailwind
+- Express
+- Django
+- Flask
+
+## Activation Triggers
+
+### Explicit Triggers
+- Any query containing 'use context7'
+- Questions about library implementation
+- Requests for code generation
+
+### Implicit Triggers
+- Queries ending with question marks
+- Queries containing: implement, create, build, generate, code
+- Requests related to API usage
+
+### Override Triggers
+- Queries containing 'no context7'
+- Historical code analysis requests
+- Theoretical language questions
+
+## Priority Guidelines
+- Always prefer Context7's up-to-date documentation over potentially outdated training data
+- For rapidly evolving libraries (Next.js, React, etc.), Context7 should always be used
+- When version-specific implementation is needed, Context7 is mandatory
+- Balance performance with accuracy by using Context7 when most beneficial

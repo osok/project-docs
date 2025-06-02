@@ -1,0 +1,99 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Coding Conventions and Documentation Guidelines
+
+## Python Code Style
+
+1. Follow PEP 8 style guidelines
+2. Use 4 spaces for indentation (no tabs)
+3. Maximum line length of 100 characters
+4. Use docstrings for all public classes, methods, and functions
+5. Prefer type annotations for function parameters and return values
+
+## Documentation Conventions
+
+### Docstrings
+
+- Use Google-style docstrings:
+```python
+def function_name(param1: str, param2: int) -> bool:
+    """Short description of function.
+    
+    Longer description explaining the function's behavior.
+    
+    Args:
+        param1: Description of first parameter
+        param2: Description of second parameter
+        
+    Returns:
+        Description of return value
+        
+    Raises:
+        ExceptionType: When and why this exception is raised
+    """
+```
+
+### Comments
+
+- Use comments sparingly and only when necessary to explain non-obvious code
+- Keep comments up-to-date with code changes
+- Avoid commented-out code; use version control instead
+
+## MCP Documentation Usage
+
+The MCP Documentation Tool Server generates three key documentation files:
+
+1. **UML Class Diagrams** (`docs/uml.txt`)
+   - Consult this when working with classes or designing OO components
+   - Follow existing inheritance patterns shown in diagrams
+   - Maintain consistent method naming within class hierarchies
+
+2. **Module Functions** (`docs/module-functions.txt`)
+   - Reference this when implementing new functionality
+   - Avoid duplicating existing utility functions
+   - Follow established parameter patterns for similar functions
+
+3. **Project Structure** (`docs/tree-structure.txt`)
+   - Use this to understand file organization
+   - Place new files in appropriate directories
+   - Follow existing naming conventions
+
+## Best Practices
+
+1. **Generate Documentation First**
+   - Always run the `create_docs` MCP tool at the beginning of your session
+   - This ensures you're working with the latest codebase understanding
+
+2. **Review Generated Documentation**
+   - Before implementing new features, review the documentation
+   - Check for existing functionality that can be reused or extended
+
+3. **Maintain Code Organization**
+   - Place code in appropriate modules:
+     - `analyzers/`: Code analysis components
+     - `tools/`: Documentation generation tools
+     - `utils/`: Utility functions and helpers
+
+4. **Error Handling**
+   - Gracefully handle errors with proper exceptions
+   - Provide informative error messages
+   - Document expected exceptions in docstrings
+
+5. **Testing**
+   - Write tests for all new functionality
+   - Follow the existing test patterns in `tests/`
+   - Run the test suite after making changes
+
+## Using the MCP Tool
+
+To generate updated documentation, use the following in a Cursor conversation:
+
+```
+Please generate documentation for this project using the docs-generator MCP server with the project_path set to the current directory.
+```
+
+This will analyze the codebase and create fresh documentation files in the `docs/` directory.
+
