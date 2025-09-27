@@ -1,6 +1,6 @@
 {
   "name": "mcp-docs-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP tools for generating project documentation",
   "type": "module",
   "bin": {

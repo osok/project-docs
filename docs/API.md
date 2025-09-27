@@ -220,6 +220,22 @@ All tools provide comprehensive error handling:
 }
 ```
 
+### Python Interpreter Detection and Overrides
+
+The server auto-detects a Python 3 interpreter at runtime. Preferred commands by platform:
+
+- Windows: `py -3`, then `python`, then `python3` (validated as Python 3)
+- macOS/Linux: `python3`, then `python` (validated as Python 3)
+
+If detection fails, an actionable error is returned:
+
+"Python 3 interpreter not found. Install Python 3 or set MCP_PYTHON (and optional MCP_PYTHON_ARGS). Tried: ..."
+
+Environment variable overrides:
+
+- `MCP_PYTHON`: command or absolute path
+- `MCP_PYTHON_ARGS`: extra arguments (e.g., `-3`)
+
 ## Performance Characteristics
 
 ### Processing Speed
@@ -290,7 +306,8 @@ All tools output to the `docs/` directory within the specified project path:
 ### Common Issues
 
 **"Python process failed"**
-- Ensure Python 3.x is installed and accessible as `python3`
+- Ensure Python 3.x is installed. The server auto-detects `py -3`, `python3`, or `python` (if Python 3).
+- Optionally set `MCP_PYTHON` (and `MCP_PYTHON_ARGS`) to explicitly select an interpreter.
 - Check that the project path exists and is readable
 - Verify the project contains Python files
 

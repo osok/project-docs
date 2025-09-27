@@ -2,6 +2,7 @@ import { spawn } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
+import { getPythonInvocation, formatPythonNotFoundError } from '../utils/python.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -19,12 +20,18 @@ export async function generateClassDiagram(projectPath) {
     // Check if Python script exists
     fs.access(pythonScript, fs.constants.F_OK)
       .then(() => {
-        const pythonProcess = spawn('python3', [
-          pythonScript,
-          '--root', projectPath,
-          '--output', docsDir,
-          '--uml-only'
-        ]);
+        let command;
+        let args;
+        try {
+          const invoke = getPythonInvocation();
+          command = invoke.command;
+          args = [...invoke.args, pythonScript, '--root', projectPath, '--output', docsDir, '--uml-only'];
+        } catch (e) {
+          reject(formatPythonNotFoundError(e));
+          return;
+        }
+
+        const pythonProcess = spawn(command, args);
 
         let stdout = '';
         let stderr = '';

@@ -141,3 +141,13 @@
 
 All major tasks from the task list have been completed successfully. The MCP docs tools server is fully functional and ready for use.
 
+## Platform Support Decision [2025-09-27]
+
+Decision to implement runtime Python 3 auto-detection for Windows/macOS/Linux because Windows environments often lack `python3` on PATH. This minimizes user setup and avoids OS-specific code paths by centralizing interpreter selection with environment overrides (`MCP_PYTHON`, `MCP_PYTHON_ARGS`). See `docs/multi_platform_mod.md` for the design. No changes to Python scripts are required.
+
+## Notes [2025-09-27]
+
+- Implemented cross-platform Python 3 detection in `src/utils/python.js` with environment overrides and caching. Rationale: reduce friction on Windows and unify invocation logic. Trade-off: minimal upfront spawnSync cost for detection. Security: only executes `--version` on PATH-resolved commands; supports explicit paths via `MCP_PYTHON`.
+- Refactored tool wrappers (`src/tools/class-diagram.js`, `src/tools/tree-structure.js`, `src/tools/module-functions.js`) to use detection and centralized error messaging. Impact: Windows compatibility without changing user commands; no regressions expected on macOS/Linux.
+- Clear error guidance when Python 3 not found, including override instructions. Performance unchanged for steady state due to caching.
+

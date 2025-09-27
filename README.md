@@ -62,6 +62,37 @@ npm start
 - **Python** 3.x (for AST parsing)
 - **Git** (for cloning the repository)
 
+## Python Interpreter Detection and Windows Support
+
+The server automatically detects a working Python 3 interpreter at runtime. On Windows it prefers `py -3` when available, and falls back to `python` or `python3` if they resolve to Python 3. On macOS/Linux it prefers `python3`, then falls back to `python` if it is Python 3.
+
+If no Python 3 interpreter is found, you will see an actionable error:
+
+"Python 3 interpreter not found. Install Python 3 or set MCP_PYTHON (and optional MCP_PYTHON_ARGS). Tried: ..."
+
+### Environment Overrides (optional)
+
+You can explicitly specify the interpreter and arguments:
+
+- `MCP_PYTHON`: command or absolute path (e.g., `py`, `python3`, `C:\\Python312\\python.exe`)
+- `MCP_PYTHON_ARGS`: space-separated arguments (e.g., `-3`)
+
+Examples:
+
+```powershell
+# Windows PowerShell
+$env:MCP_PYTHON = "python"
+$env:MCP_PYTHON_ARGS = "-3"
+npm start
+```
+
+```bash
+# macOS/Linux bash
+export MCP_PYTHON=py
+export MCP_PYTHON_ARGS=-3
+npm start
+```
+
 ## Usage
 
 ### As MCP Server
